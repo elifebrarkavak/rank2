@@ -1,0 +1,29 @@
+#include <unistd.h>
+
+int main(int argc, char *argv[])
+{
+	if(argc==2)
+	{
+		int i=0;
+		int j;
+		while(argv[1][i])
+			i++;
+		i--;
+		while(argv[1][i] == 32 || (argv[1][i] >= 9 && argv[1][i] <= 13))
+		{
+			i--;
+		}
+		j=i;
+		while(!(argv[1][i] == 32 || (argv[1][i] >= 9 && argv[1][i] <= 13)) && argv[1][i])
+		{
+			i--;
+		}
+		i++;
+		while(i<=j)
+		{
+			write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+}
